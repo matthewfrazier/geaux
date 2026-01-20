@@ -51,7 +51,7 @@ export class DeploymentService {
   }
 
   private generateId(): string {
-    return `deploy-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    return `deploy-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
   }
 
   public async deploy(
@@ -115,7 +115,7 @@ export class DeploymentService {
     // 3. Run health checks
     // 4. Update routing/load balancers
     
-    console.error(`Deploying ${deployment.version} to ${endpoint}...`);
+    console.log(`Deploying ${deployment.version} to ${endpoint}...`);
   }
 
   private sleep(ms: number): Promise<void> {

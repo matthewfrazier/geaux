@@ -110,7 +110,28 @@ export class ConfigManager {
     target: string,
     config: GitHubConfig | PlayStoreConfig | AppStoreConfig | ServerConfig
   ): void {
-    this.config.deploymentTargets[target as keyof typeof this.config.deploymentTargets] = config as any;
+    const validTargets = ['github', 'playstore', 'appstore', 'server'] as const;
+    type ValidTarget = typeof validTargets[number];
+    
+    if (!validTargets.includes(target as ValidTarget)) {
+      throw new Error(`Invalid deployment target: ${target}`);
+    }
+    
+    switch (target) {
+      case 'github':
+        this.config.deploymentTargets.github = config as GitHubConfig;
+        break;
+      case 'playstore':
+        this.config.deploymentTargets.playstore = config as PlayStoreConfig;
+        break;
+      case 'appstore':
+        this.config.deploymentTargets.appstore = config as AppStoreConfig;
+        break;
+      case 'server':
+        this.config.deploymentTargets.server = config as ServerConfig;
+        break;
+    }
+    
     this.saveConfig();
   }
 }

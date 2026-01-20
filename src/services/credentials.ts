@@ -101,6 +101,11 @@ export class CredentialManager {
     
     for (const [key, value] of Object.entries(data)) {
       const parts = value.split(':');
+      
+      if (parts.length !== 2) {
+        throw new Error(`Invalid encrypted data format for key: ${key}`);
+      }
+      
       const iv = Buffer.from(parts[0], 'hex');
       const encryptedValue = parts[1];
       
