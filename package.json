@@ -1,0 +1,32 @@
+{
+  "name": "geaux-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP service for managing code deployment to Dev, preproduction and production environments",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "geaux-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "deployment",
+    "ci-cd",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  }
+}

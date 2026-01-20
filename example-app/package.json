@@ -1,0 +1,11 @@
+{
+  "name": "geaux-example-app",
+  "version": "1.0.0",
+  "description": "Example localhost app for Geaux deployment testing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["example", "deployment"],
+  "license": "MIT"
+}
